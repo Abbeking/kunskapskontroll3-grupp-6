@@ -53,6 +53,9 @@ body {
     height: 9rem;
     width: 9rem;
     transform-style: preserve-3d;
+    transition: transform .7s;
+    /*** Denna gör så att .card blir lite snea <- ***/
+    transform: rotate3d(1, 1, 1, -20deg);
 }
 
 

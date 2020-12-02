@@ -1,5 +1,5 @@
 
-
+// min API
 const KEY = 'd2631700c655889a0140bf73d669c79e';
 let searchText = 'santa';
 
@@ -75,8 +75,10 @@ function flipMyCard() {
     // Ifall firstCard = this; raderas då kommer inte FÖRSTA kortet stanna kvar, du kan då klicka på alla kort.
     firstCard = this;
     // Den väntar nu tills nästa klick med hjälp av return.
+
     return;
   }
+
 
 
 
@@ -125,7 +127,7 @@ function unflipCards() {
     // Kallar på funktionen som finns under "unflipCards" funktion.
     resetBoard();
     // Tiden för hur länge
-  }, 1000);
+  }, 1300);
 }
 /******* ******/
 
@@ -176,8 +178,8 @@ let movesCounter = 0;
 // Frida la till score över addEventListener så att det går att fixa 5 poäng.
 let score = 0;
 
-//Justera när Arber har lagt till fler kort, öka till 60
-let targetScore = 30;
+//  Max score
+let targetScore = 60;
 
 /****** FRIDA *** La till Arbers addEventListener för att fixa moves så den fungerar tsm.****/
 cards.forEach(card => card.addEventListener('click',
