@@ -1,4 +1,5 @@
 
+
 const KEY = 'd2631700c655889a0140bf73d669c79e';
 let searchText = 'santa';
 
@@ -38,12 +39,6 @@ function displayImg(url){
 
 }
 
-/***** GALINA ******/
-let second = 0, minute = 0; hour = 0;
-let timer = document.querySelector("#time")
-let interval;
-let finalTime = timer.innerHTML;
-/***** ******/
 
 
 
@@ -99,13 +94,14 @@ function flipMyCard() {
 
 
 /******* ARBER - Ifall korten matchar & om dem gör så går den till disableCards dvs, börjar om på ruta ett. *******/
-
+// Funktion som kollar ifall det matchar.
 function doesItMatch() {
   let isMatch = firstCard. dataset.framework === secondCard.dataset.framework;
-
+  // Detta är istället för en IF statement.
   isMatch ? disableCards() : unflipCards();
 }
-
+// En funktion som gör att när du valt 2 kort så kan du trycka vidare.
+// Ifall funktionen inte finns så kan inte spelaren fortsätta efter sina 2 första kort är uppe.
 function disableCards() {
   firstCard.removeEventListener('click', flipMyCard);
   secondCard.removeEventListener('click', flipMyCard);
@@ -126,13 +122,16 @@ function unflipCards() {
   setTimeout(() => {
     firstCard.classList.remove('letsFlip');
     secondCard.classList.remove('letsFlip');
-    // Tiden för hur länge
+    // Kallar på funktionen som finns under "unflipCards" funktion.
     resetBoard();
+    // Tiden för hur länge
   }, 1000);
 }
 /******* ******/
 
 /****** Arber *******/
+// Denna funktionen gör så att du kan trycka vidare efter när första och andra kortet är uppe vare sig det matchar eller inte.
+// Ifall man tar funktionen så kan inte spelaren fortsätta trycka vidare efter sina första 2 kort.
 function resetBoard() {
   // youFlipTheCard & cardIsLocked är false
   [youFlipTheCard, cardIsLocked] = [false, false];
@@ -141,8 +140,7 @@ function resetBoard() {
 }
 
 
-
-
+// Den här addEventListenern är till för varje klick dvs kort. Jag kallar denna även under funktionen " flipMyCard "
 cards.forEach(card => card.addEventListener('click', flipMyCard));
 
 
@@ -178,15 +176,16 @@ let movesCounter = 0;
 // Frida la till score över addEventListener så att det går att fixa 5 poäng.
 let score = 0;
 
-
+//Justera när Arber har lagt till fler kort, öka till 60
+let targetScore = 30;
 
 /****** FRIDA *** La till Arbers addEventListener för att fixa moves så den fungerar tsm.****/
 cards.forEach(card => card.addEventListener('click',
     function(){
         
-        //För varje click, så räknas ett move
-        movesCounter++;
+        //För varje klick, så räknas ett move
         let moves = document.querySelector('#moves');
+        movesCounter++;
 
         moves.innerText = movesCounter;
         /****** GALINA *****/
@@ -212,9 +211,20 @@ cards.forEach(card => card.addEventListener('click',
     /************************** **************************/
 
 
+    /*****************GAME OVER START******************/
+    //frida
+    if(targetScore === score){
+      setTimeout(
+        function(){
+          alert(`End of round! Your score: ${score}. Your time: ${hour}h ${minute}min ${second}sec. In ${movesCounter} amount of moves`);
+          window.location.reload() 
+        }, 200);
+    }
+
 })
     
 )  
+/*****************GAME SLUTAR ******************/
 
 /************** MOVESCOUNTER SLUTAR **************/
 
@@ -223,8 +233,17 @@ cards.forEach(card => card.addEventListener('click',
 
 /********* GALINA - TIMER **********/
 
+
+/***** GALINA ******/
+let second = 0, minute = 0; hour = 0;
+let timer = document.querySelector("#time")
+let interval;
+let finalTime = timer.innerHTML;
+/***** ******/
+
 function startTimer(){
-  interval = setInterval(function(){
+  interval = setInterval
+  (function(){
       timer.innerHTML = minute+"mins "+second+"secs";
       second++;
       if(second == 60){
@@ -238,33 +257,4 @@ function startTimer(){
   },1000);
 }
 
-
-/*************** RESET START  ****************/
-//Frida Waldt
-
-
-
-//En funktion som resettar vår tid, score och moves och unflippar alla kort.
-function reset(){
-    unflip(); //Arbers funktion
-    time = 0;  //Galinas variabel
-    score = 0; // Arbers variabel
-    moves = 0; // Min variabel
-
-
-    let timeCounter = document.querySelector('#time');
-    timeCounter.innerText = time;
-    let scoreCounter = document.querySelector('#score');
-    scoreCounter.innerText = score;
-    let movesCounter = document.querySelector('#moves');
-    movesCounter.innerText = moves;
-
-
-}
-
-
-/*************** RESET END ****************/
-
-
-
-
+/********SLUTAR HÄR********/

@@ -4,24 +4,36 @@
     box-sizing: border-box;
 }
 
+/*********** TA BORT SEN INFÖR INLÄMNING ********/
+.back-face {
+    background-color: rgb(196, 104, 104);
+}
+/***************************** *****************************/
+
 body {
     height: 100vh;
-    background-color: rgb(252, 149, 149);
+    background-image: url("https://wallpapercave.com/wp/Xmmby6p.jpg") ;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
     
 }
 
 
 .page-title{
     text-align: center;
+    font-size: 2rem;
+    color: rgb(0, 0, 0);
+    background-color: rgb(175, 180, 247);
+    padding-bottom: 0.3rem;
 }
 
 
 .game-container{
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(8, auto);
     grid-gap: 10px;
-    margin: 50px;
+    margin-top: 50px;
     
 }
 
@@ -32,10 +44,13 @@ body {
     justify-content: space-between;
 }
 
-
+.game-info {
+    font-size: 2rem;
+    background-color: rgb(128, 128, 128);
+}
 
 .card{
-    height: 12rem;
+    height: 9rem;
     width: 9rem;
     transform-style: preserve-3d;
 }
@@ -58,19 +73,3 @@ body {
     position: absolute;
     backface-visibility: hidden;
   }
-  
-
-.btn{
-    display: flex;
-    justify-content: center;
-}
-
-
-#reset-btn{
-    grid-column: 1 / -1;
-    padding: 1rem 1.5rem;
-    border-radius: 0.6rem;
-    font-weight: bold;
-    border-style: none;
-}
-

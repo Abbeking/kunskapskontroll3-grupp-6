@@ -24,8 +24,8 @@ Fetch, API osv = **Hela gruppen**
 För varje par så får du som spelare 5 poäng (SCORE) = **Arber & Frida**
 
 Shuffle the cards som sätter bilderna random = **Frida** + lite hjälp.
-Movescounter för varje klicka = **Frida**
-Kopplat resetknapp = **Frida**
+Movescounter för varje klick = **Frida**
+När alla kort är parade så kommer en alert upp och du kan sedan börja om = **Frida**
 
 Några variabler för timer, intervaller = **Galina**
 Timer som börjar från första klicken = **Galina**
