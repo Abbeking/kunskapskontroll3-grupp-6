@@ -15,16 +15,6 @@ body {
     text-align: center;
 }
 
-/** TA BORT SEN **/
-.back-face {
-    background-color: blue;
-}
-
-.front-face {
-    background-color: red;
-}
-
-
 
 .game-container{
     justify-content: center;
@@ -52,7 +42,7 @@ body {
 
 
   
-.card.flip {
+.card.letsFlip {
     transform: rotateY(180deg);
   }
 
