@@ -3,45 +3,47 @@
 const KEY = 'd2631700c655889a0140bf73d669c79e';
 let searchText = 'santa';
 
-const url = `https://www.flickr.com/services/rest/?api_key=${KEY}&method=flickr.photos.search&text=${searchText}&format=json&nojsoncallback=1&per_page=1&page=5`;
+const url = `https://www.flickr.com/services/rest/?api_key=${KEY}&method=flickr.photos.search&text=${searchText}&format=json&nojsoncallback=1&per_page=12&page=1`;
 
 fetch(url).then(
     function(response){
-        console.log(response);
+        // console.log(response);
         return response.json();
     }
 ).then(
     function(data){
-        console.log(data.photos.photo[0]);
-        getImageUrl(data.photos.photo[0]);
+        console.log(data.photos.photo);
+        getImageUrl(data.photos.photo);
     }
 )
 
-//  här ska vi pussla ihop bild urlen
-function getImageUrl(photoObject){
-    let photo = photoObject;
-    let size = 'b';
 
-    let imgUrl = `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_${size}.jpg`;
+//här ska vi pussla ihop bild urlen
+function getImageUrl(photoArray){
+  let photo = photoArray;
+  console.log('photo', photo)
 
-    console.log(imgUrl);
-    displayImg(imgUrl);
+  let size = 'q';
+  let imgUrls = [];
+
+  for(let i = 0; i < 12; i++){
+      let url = `https://live.staticflickr.com/${photo[i].server}/${photo[i].id}_${photo[i].secret}_${size}.jpg`;
+
+      imgUrls.push(url);
+  }
+  //////////////////////////////////////////////////////
+
+  imgUrls.push(...imgUrls)
+
+  console.log(imgUrls.length)
+
+  let img = document.querySelectorAll('.front-face');
+
+
+  for (let i = 0; i < img.length; i++){
+  img[i].setAttribute('src', imgUrls[i]);
+  }
 }
-
-//  för att visa bilden
-function displayImg(url){
-    let img = document.querySelector('.pair-1');
-    img.src = url;
-    //  img.setAttribute('src', url);
-
-    let body = document.querySelector('body');
-    body.appendChild(img);
-
-}
-
-
-
-
 
 
 

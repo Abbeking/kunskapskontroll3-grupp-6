@@ -18,6 +18,7 @@ Disable cardsen = **Arber** + hjälp från gruppen.
 resetBoard = **Arber, Frida & Galina**
 
 Fetch, API osv = **Hela gruppen**
+
 **Galina fixade exempel på SCORE, men vi gjorde om så att det istället funkar för varje par.**
 **Arber kom på IF statement efter 1 par dvs 5 poäng**
 **Frida & Galina kom på resten**
