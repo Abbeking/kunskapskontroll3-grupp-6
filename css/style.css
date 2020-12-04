@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-/*********** TA BORT SEN INFÖR INLÄMNING ********/
-.back-face {
-    background-color: rgb(196, 104, 104);
-}
-/***************************** *****************************/
 
 body {
     height: 100vh;
@@ -57,7 +52,6 @@ body {
     /*** Denna gör så att .card blir lite snea <- ***/
     transform: rotate3d(1, 1, 1, -20deg);
 }
-
 
   
 .card.letsFlip {

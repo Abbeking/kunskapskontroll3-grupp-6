@@ -57,6 +57,7 @@ let youFlipTheCard = false;
 // Börjar med false här med.
 let cardIsLocked = false;
 let firstCard, secondCard;
+let cardsFlippedCount = 0;    //GALA
 
 
 /********* ARBERS funktion *********/
@@ -69,6 +70,7 @@ function flipMyCard() {
   return;
     // Den har med CSS att göra
   this.classList.add('letsFlip');
+  cardsFlippedCount++;              //GALA
     // Fixat att youFlipTheCard är false & null.
   if (youFlipTheCard === false || youFlipTheCard === null) {
     // Den blir nu till TRUE så kortet kan flippas.
@@ -125,7 +127,9 @@ function unflipCards() {
   // En timeout baserat på när du trycker på något kort så väntar den lite tills nästa.
   setTimeout(() => {
     firstCard.classList.remove('letsFlip');
+    firstCard.classList.remove('face-up');         //Gala
     secondCard.classList.remove('letsFlip');
+    secondCard.classList.remove('face-up');         //Gala
     // Kallar på funktionen som finns under "unflipCards" funktion.
     resetBoard();
     // Tiden för hur länge
@@ -180,25 +184,36 @@ let movesCounter = 0;
 // Frida la till score över addEventListener så att det går att fixa 5 poäng.
 let score = 0;
 
-//  Max score
-let targetScore = 60;
 
-/****** FRIDA *** La till Arbers addEventListener för att fixa moves så den fungerar tsm.****/
+/****** FRIDA ***  La till Arbers addEventListener för att fixa moves så den fungerar tsm.****/
+
+// FRIDA & GALINA
+
 cards.forEach(card => card.addEventListener('click',
-    function(){
-        
-        //För varje klick, så räknas ett move
-        let moves = document.querySelector('#moves');
-        movesCounter++;
-
-        moves.innerText = movesCounter;
-        /****** GALINA *****/
-        if(movesCounter==1){
-          second = 0;
-          minute = 0; 
-          hour = 0;
-          startTimer();
+    function(event){
+        if(card.classList.contains('face-up')){           //Gala 
+            return;
+        } else {
+            card.classList.add('face-up');
         }
+
+        if(cardsFlippedCount === 1){
+            /****** GALINA *****/
+            second = 0;
+            minute = 0;
+            hour = 0;
+            startTimer();
+        }
+
+        if(cardsFlippedCount % 2 === 0){            //Gala
+            //För varje klick, så räknas ett move
+            let moves = document.querySelector('#moves');
+            movesCounter++;
+
+            moves.innerText = movesCounter;
+        }
+
+
         /****** SLUTAR HÄR *******/
 
 
@@ -215,20 +230,20 @@ cards.forEach(card => card.addEventListener('click',
     /************************** **************************/
 
 
-    /*****************GAME OVER START******************/
-    //frida
-    if(targetScore === score){
-      setTimeout(
-        function(){
-          alert(`End of round! Your score: ${score}. Your time: ${hour}h ${minute}min ${second}sec. In ${movesCounter} amount of moves`);
-          window.location.reload() 
-        }, 200);
-    }
-
+    /*****************VICTORY BÖRJAR******************/
+    //Frida och Galina
+  let machedCardArr=document.getElementsByClassName('letsFlip');
+  if(machedCardArr.length==24){
+    clearInterval(interval);
+    setTimeout(
+      function(){
+        alert(`End of round! Your score: ${score}. Your time: ${hour}h ${minute}min ${second}sec. In ${movesCounter} amount of moves`);
+        window.location.reload()
+      }, 200);
+  }
 })
-    
-)  
-/*****************GAME SLUTAR ******************/
+)
+/*****************VICTORY SLUTAR ******************/
 
 /************** MOVESCOUNTER SLUTAR **************/
 
